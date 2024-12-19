@@ -1,0 +1,46 @@
+# An example for a custom unraid SMB config
+# This forces user to align with your share.  Great if you need to shre 99:100
+# Also has config info to add ZFS shanpshots to Windows Shadow Copies. (Make sure naming pattern matches your snapshot name)
+
+interfaces = 10.11.21.20/24 10.11.11.20/24 10.11.41.20/24  # What interfaces to listen on
+deadtime = 30
+use sendfile = yes
+min receivefile size = 16384
+
+[admin]                                                                                                                                                                 
+path = /mnt/user/admin
+public = no
+browseable = yes
+valid users = user1 user2 root                                                                                                                                                     
+guest ok = no
+writeable = yes
+read only = no
+inherit permissions = yes
+force user = root
+force group = root
+create mask = 0660
+directory mask = 0777
+vfs objects = shadow_copy2
+shadow: snapdir = .zfs/snapshot
+shadow: sort = desc
+shadow: format = autosnap_%Y-%m-%d_%H:%M:%S_daily
+shadow: localtime =  yes
+
+[appdata]                                                                                                                                                                 
+path = /mnt/user/appdata
+public = no
+browseable = yes
+valid users = user1 user2                                                                                                                                                     
+guest ok = no
+writeable = yes
+read only = no
+inherit permissions = yes
+force user = nobody
+force group = users
+create mask = 0660
+directory mask = 0777
+vfs objects = shadow_copy2
+shadow: snapdir = .zfs/snapshot
+shadow: sort = desc
+shadow: format = autosnap_%Y-%m-%d_%H:%M:%S_daily
+shadow: localtime =  yes

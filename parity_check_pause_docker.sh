@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# Notes:
+# - Does not consider if parity check is paused
+# - A paused parity will be seen as a running parity
+# - no logic in place to account for if you paused the container manually, it will unpause any paused container on the list
+
+V0.9 Initial Commit
+
 # Define an array of Docker containers to manage, can add our remove as needed
 containers_to_manage=(
                     "deluge"

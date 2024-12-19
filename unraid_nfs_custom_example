@@ -1,0 +1,12 @@
+# Raw nfs connection string:
+/mnt/user/appdata 10.11.41.45(sec=sys,rw,all_squash,anonuid=99,anongid=100,no_subtree_check,fsid=101
+
+
+# For unraid, customize command to suit and then add to the "go" file:
+echo '/mnt/user/appdata 10.1.40.45(sec=sys,rw,all_squash,anonuid=99,anongid=100,no_subtree_check,fsid=101)' >> /etc/exports.d/appdata.exports
+
+
+# Client conenction string would look like:
+/mnt/user/appdata 10.11.41.20(rw,sync,no_root_squash,no_subtree_check,anonuid=99,anongid=100)
+
+# You can adjust anonuid & gid to match your client user.  It will then translate it to what you configured on the server.

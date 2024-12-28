@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# create 1 to 1 USB backup/copy, with a folder that keeps version changes.  (needs manual pruning right now
+# Define the destination directories, or just 1. Here we copy to another mounted USB and also to a share
+DESTINATIONS=("/mnt/disks/usbbk" "/mnt/user/backups/unraid_usb")
+
 # folders to exclude, add/remove as needed
 EXCLUDE=(--exclude=**/.git/ --exclude=**/.vscode/ --exclude=**/.vscode-server/ --exclude=/logs/)
 
-# Define an array of destination directories, here we copy to another mounted USB and also to a share
-DESTINATIONS=("/mnt/disks/usbbk" "/mnt/backups/unraid_usb")
-
+### End User Coinfig ###
 # Define source directory
 SRC="/boot"
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-
+### Should not be needed on Unraid 7, you can now set the limit in the unraid settings!
 # Unraid default ulimit is 40k open files.  Upon reaching this limit all unraid shares will dissapear.  This script will increase the ulimit.  Run on a cron shedule, every 5 minutes should be good.
 # You may need to reduce the polling time, if you still find yourself hitting the limit with a 5 min polling duration.
 
